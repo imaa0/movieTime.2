@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>movieTime</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #2c2c2b;
+      color: #e3d1d1;
+    }
+
+    /* Wrapper for Page Size */
+    .container {
+      max-width: 1000px; /* Adjust this width as needed */
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    /* Header Styles */
+    header {
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 50px 10px;
+      background-image: url('https://images.pexels.com/photos/450055/pexels-photo-450055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      background-size: cover;  /* Ensures the background image covers the full space */
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 5px 0;
+      z-index: 2; /* Ensures text is above the image */
+    }
+
+    header p {
+      font-size: 1.2em;
+      z-index: 2; /* Ensures text is above the image */
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      z-index: 2; /* Ensures links are above the image */
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Search Bar Styles */
+    .search-container {
+      margin: 10px auto;
+      width: 90%; /* Smaller width for compactness */
+      max-width: 300px;
+      position: relative;
+      z-index: 2; /* Ensures search bar is above the image */
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .search-button {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #a4b1bf;
+    }
+
+    /* Movie List */
+    .movie-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .movie-item {
+      background: #fff;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .movie-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .movie-item:hover {
+      transform: scale(1.05);
+    }
+
+    .movie-item h3 {
+      font-size: 14px;
+      margin: 10px 0 5px;
+    }
+
+    .movie-item p {
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 10px 0;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">How to download?</a></li>
+          <li><a href="#">Report</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
+      </nav>
+      <h1>MOVIE TIME</h1>
+      <p>Explore. Watch. Repeat.</p>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input id="searchField" class="search-input" type="text" placeholder="Search for movies...">
+        <button class="search-button" onclick="performSearch()">🔍</button>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+      <section>
+        <h2>Featured Movies</h2>
+        <div class="movie-list">
+          <div class="movie-item">
+            <img src="https://i.ibb.co/992d7vD/lj.jpg" alt="The Last Journey">
+            <h3>The Last Journey</h3>
+            <p>Genre: Adventure</p>
+          </div>
+          <div class="movie-item">
+            <img src="https://i.ibb.co/vXMfbVS/col.jpg" alt="City of Lights">
+            <h3>City of Lights</h3>
+            <p>Genre: Romance</p>
+          </div>
+          <div class="movie-item">
+            <img src="https://i.ibb.co/LQGX7JD/gl.jpg" alt="Galactic Wars">
+            <h3>Galactic Wars</h3>
+            <p>Genre: Sci-Fi</p>
+          </div>
+          <div class="movie-item">
+            <img src="https://i.ibb.co/4d9Pgyw/download.jpg" alt="Comedy Central">
+            <h3>Comedy Central</h3>
+            <p>Genre: Comedy</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 movieTime</p>
+    </footer>
+  </div>
+
+  <script>
+    // Search Logic
+    function performSearch() {
+      const searchField = document.getElementById('searchField');
+      const query = searchField.value.trim();
+      if (query) {
+        alert(`Searching for: ${query}`);
+        // Add actual search logic here if needed
+      } else {
+        alert('Please enter a search term.');
+      }
+    }
+
+    // Event Listener Example
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Website Loaded Successfully!");
+    });
+  </script>
+</body>
+</html>
